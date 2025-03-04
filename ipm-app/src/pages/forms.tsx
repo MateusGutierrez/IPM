@@ -1,14 +1,23 @@
 import Content from '@/components/content';
-import { Button } from '@/components/ui/button';
-
+import FormComponent from '@/components/form';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 const Forms: React.FC = () => {
   return (
-    <Content>
-      <section>
-        <h1>Forms</h1>
-        <Button>Forms</Button>
-      </section>
+    <Content className='flex justify-center pt-6'>
+      <Card className="min-w-[350px] w-[50%]">
+      <CardHeader>
+        <CardTitle>Envie sua  mensagem</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <FormComponent/>
+      </CardContent>
+    </Card>
     </Content>
   );
 };
