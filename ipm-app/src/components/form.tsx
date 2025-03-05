@@ -13,14 +13,24 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from './ui/textarea';
 import { FormSchema } from '@/schema';
+import { v4 as uuidv4 } from 'uuid';
+import { useStore } from 'zustand';
+import useMessageStore from '@/zustand/messageStore';
 
 const FormComponent: React.FC = () => {
+  const { addMessage } = useStore(useMessageStore);
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema)
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: ''
+    }
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
+    addMessage({ ...data, id: uuidv4() });
+    form.reset();
   }
 
   return (

@@ -5,7 +5,7 @@ const Home: React.FC = () => {
   return (
     <Content>
       <section>
-        <main className="flex pt-6 gap-6">
+        <main className="flex flex-col justify-center pt-6 gap-6">
           <div>
             <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl pt-6">
               Impulsione a qualidade de vida das pessoas com uma{' '}
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
               estamos apenas começando nossa jornada.
             </p>
           </div>
-          <img src={banner} className="w-[40%] rounded-xl" />
+          <img src={banner} className="w-[40%] rounded-xl self-center" />
         </main>
       </section>
     </Content>

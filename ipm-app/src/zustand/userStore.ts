@@ -1,6 +1,7 @@
 import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
-interface User {
+export interface User {
   gender: string;
   name: {
     title: string;
@@ -45,9 +46,17 @@ interface UserState {
   setUsers: (users: User[]) => void;
 }
 
-const useUserStore = create<UserState>(set => ({
-  users: [],
-  setUsers: users => set(() => ({ users }))
-}));
+const useUserStore = create<UserState>()(
+  persist(
+    set => ({
+      users: [],
+      setUsers: users => set(() => ({ users }))
+    }),
+    {
+      name: 'user-storage',
+      storage: createJSONStorage(() => sessionStorage)
+    }
+  )
+);
 
 export default useUserStore;
