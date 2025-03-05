@@ -173,3 +173,7 @@ O projeto utiliza a biblioteca `requests` para consumir a API. As dependências 
 Flask
 requests
 ```
+
+
+## 🔄 Deploy
+ api live -> [https://ipm-jsc4.onrender.com/](https://ipm-jsc4.onrender.com/) 
