@@ -4,5 +4,5 @@ export interface ContextProps {
 
 export interface IContext {
   get_user: () => void;
-  get_listed_users: (quantity: number) => void;
+  get_listed_users: (quantity?: number) => Promise<void>;
 }

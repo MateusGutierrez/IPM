@@ -12,18 +12,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from './ui/textarea';
-
-const FormSchema = z.object({
-  name: z.string().min(2, {
-    message: 'name must be at least 2 characters.'
-  }),
-  email: z.string().email().min(2, {
-    message: 'e-mail must be at least 2 characters.'
-  }),
-  message: z.string().min(2, {
-    message: 'message must be at least 2 characters.'
-  })
-});
+import { FormSchema } from '@/schema';
 
 const FormComponent: React.FC = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
