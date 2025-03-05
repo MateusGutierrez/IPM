@@ -15,7 +15,7 @@ const Content: React.FC<Props> = ({ children, className }) => {
       <section
         className={cn(
           'min-h-[90vh] w-[90%] m-[auto] bg-background text-foreground pb-[60px]',
-          className,
+          className
         )}
       >
         {children}

@@ -6,9 +6,9 @@ import Dashboard from '@/pages/dashboard';
 
 const GlobalRoute = () => (
   <Routes>
-    <Route path={paths.home} element={<Home/>} />
-    <Route path={paths.forms} element={<Forms/>} />
-    <Route path={paths.dashboard} element={<Dashboard/>} />
+    <Route path={paths.home} element={<Home />} />
+    <Route path={paths.forms} element={<Forms />} />
+    <Route path={paths.dashboard} element={<Dashboard />} />
     <Route path="*" element={<h1>Hello world !</h1>} />
   </Routes>
 );

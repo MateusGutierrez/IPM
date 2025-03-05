@@ -1,7 +1,6 @@
 import Content from '@/components/content';
 import { Button } from '@/components/ui/button';
 
-
 const Dashboard: React.FC = () => {
   return (
     <Content>

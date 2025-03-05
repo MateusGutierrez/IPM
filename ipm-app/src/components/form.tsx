@@ -1,37 +1,37 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Button } from "@/components/ui/button"
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "./ui/textarea"
+  FormMessage
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from './ui/textarea';
 
 const FormSchema = z.object({
   name: z.string().min(2, {
-    message: "name must be at least 2 characters.",
+    message: 'name must be at least 2 characters.'
   }),
   email: z.string().email().min(2, {
-    message: "e-mail must be at least 2 characters.",
+    message: 'e-mail must be at least 2 characters.'
   }),
   message: z.string().min(2, {
     message: 'message must be at least 2 characters.'
-  }) ,
-})
+  })
+});
 
-const FormComponent:React.FC = () =>  {
+const FormComponent: React.FC = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
-  })
+  });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-   console.log(data)
+    console.log(data);
   }
 
   return (
@@ -70,7 +70,11 @@ const FormComponent:React.FC = () =>  {
             <FormItem>
               <FormLabel>Mensagem</FormLabel>
               <FormControl>
-                <Textarea placeholder="Escreva sua mensagem aqui." className="resize-none" {...field}/>
+                <Textarea
+                  placeholder="Escreva sua mensagem aqui."
+                  className="resize-none"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -79,6 +83,6 @@ const FormComponent:React.FC = () =>  {
         <Button type="submit">Enviar</Button>
       </form>
     </Form>
-  )
-}
-export default FormComponent
+  );
+};
+export default FormComponent;
