@@ -1,6 +1,6 @@
 enum paths {
   home = '/',
-  forms = '/signup',
+  form = '/form',
   dashboard = '/dashboard'
 }
 export default paths;

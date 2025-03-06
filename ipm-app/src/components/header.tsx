@@ -9,10 +9,18 @@ import {
 } from '@/components/ui/navigation-menu';
 import paths from '@/routes/paths';
 import { Menu } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const navigateOnClick = useCallback(
+    (path: string) => {
+      navigate(path);
+    },
+    [navigate]
+  );
   return (
     <header className="flex w-full bg-popover text-foreground items-center border-b border-border">
       <div className="flex justify-between max-w-[90%] w-full items-center mx-auto py-3 px-4">
@@ -22,26 +30,29 @@ const Header: React.FC = () => {
         <nav className="hidden md:flex gap-6">
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <a href={paths.home}>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Home
-                  </NavigationMenuLink>
-                </a>
+              <NavigationMenuItem className="cursor-pointer">
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  onClick={() => navigateOnClick(paths.home)}
+                >
+                  Home
+                </NavigationMenuLink>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <a href={paths.dashboard}>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Dashboard
-                  </NavigationMenuLink>
-                </a>
+              <NavigationMenuItem className="cursor-pointer">
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  onClick={() => navigateOnClick(paths.dashboard)}
+                >
+                  Dashboard
+                </NavigationMenuLink>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <a href={paths.forms}>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Form
-                  </NavigationMenuLink>
-                </a>
+              <NavigationMenuItem className="cursor-pointer">
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  onClick={() => navigateOnClick(paths.form)}
+                >
+                  Form
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -60,24 +71,24 @@ const Header: React.FC = () => {
       {isOpen && (
         <div className="md:hidden absolute top-16 left-0 w-full bg-popover shadow-md">
           <nav className="flex flex-col items-center border">
-            <a
-              href={paths.home}
-              className="text-lg border-b w-full text-center flex justify-center"
+            <div
+              className="text-lg border-b w-full text-center flex justify-center cursor-pointer"
+              onClick={() => navigateOnClick(paths.home)}
             >
               Home
-            </a>
-            <a
-              href={paths.dashboard}
-              className="text-lg border-b w-full text-center  flex justify-center"
+            </div>
+            <div
+              className="text-lg border-b w-full text-center flex justify-center cursor-pointer"
+              onClick={() => navigateOnClick(paths.dashboard)}
             >
               Dashboard
-            </a>
-            <a
-              href={paths.forms}
-              className="text-lg border-b w-full text-center flex justify-center"
+            </div>
+            <div
+              className="text-lg border-b w-full text-center flex justify-center cursor-pointer"
+              onClick={() => navigateOnClick(paths.form)}
             >
               Form
-            </a>
+            </div>
           </nav>
         </div>
       )}
