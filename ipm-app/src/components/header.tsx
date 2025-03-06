@@ -58,14 +58,12 @@ const Header: React.FC = () => {
           </NavigationMenu>
           <ModeToggle />
         </nav>
-
-        <button
-          className="md:hidden flex items-center gap-4"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <div className="md:hidden flex items-center gap-4">
           <ModeToggle />
-          <Menu size={24} />
-        </button>
+          <button onClick={() => setIsOpen(!isOpen)}>
+            <Menu size={24} />
+          </button>
+        </div>
       </div>
 
       {isOpen && (
