@@ -3,7 +3,6 @@ import FormComponent from '@/components/form';
 import { DataTableDemo } from '@/components/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-// sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
 const Forms: React.FC = () => {
   return (
     <Content className="flex flex-col justify-between pt-6 gap-6">

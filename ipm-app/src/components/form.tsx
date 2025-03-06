@@ -41,9 +41,9 @@ const FormComponent: React.FC = () => {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Nome</FormLabel>
               <FormControl>
-                <Input placeholder="Name" {...field} />
+                <Input placeholder="Nome" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

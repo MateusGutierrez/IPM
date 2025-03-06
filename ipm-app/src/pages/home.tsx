@@ -19,7 +19,10 @@ const Home: React.FC = () => {
               estamos apenas começando nossa jornada.
             </p>
           </div>
-          <img src={banner} className="w-[40%] rounded-xl self-center" />
+          <img
+            src={banner}
+            className="w-[40%] min-w-[300px]  rounded-xl self-center"
+          />
         </main>
       </section>
     </Content>

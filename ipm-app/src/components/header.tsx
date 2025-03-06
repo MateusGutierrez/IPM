@@ -8,15 +8,18 @@ import {
   navigationMenuTriggerStyle
 } from '@/components/ui/navigation-menu';
 import paths from '@/routes/paths';
+import { Menu } from 'lucide-react';
+import React, { useState } from 'react';
 
-const Header = () => {
+const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="flex w-full bg-popover text-foreground items-center border-b-solid border-b-[1px] border-b-border">
-      <div className="flex justify-between w-[90%] items-center m-[auto] p-2">
+    <header className="flex w-full bg-popover text-foreground items-center border-b border-border">
+      <div className="flex justify-between max-w-[90%] w-full items-center mx-auto py-3 px-4">
         <div className="flex gap-4 items-center">
-          <img src={logo} alt="logo" className="w-[60px]" />
+          <img src={logo} alt="logo" className="w-12 sm:w-16" />
         </div>
-        <div className="flex gap-6">
+        <nav className="hidden md:flex gap-6">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -36,15 +39,48 @@ const Header = () => {
               <NavigationMenuItem>
                 <a href={paths.forms}>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Forms
+                    Form
                   </NavigationMenuLink>
                 </a>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
           <ModeToggle />
-        </div>
+        </nav>
+
+        <button
+          className="md:hidden flex items-center gap-4"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <ModeToggle />
+          <Menu size={24} />
+        </button>
       </div>
+
+      {isOpen && (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-popover shadow-md">
+          <nav className="flex flex-col items-center border">
+            <a
+              href={paths.home}
+              className="text-lg border-b w-full text-center flex justify-center"
+            >
+              Home
+            </a>
+            <a
+              href={paths.dashboard}
+              className="text-lg border-b w-full text-center  flex justify-center"
+            >
+              Dashboard
+            </a>
+            <a
+              href={paths.forms}
+              className="text-lg border-b w-full text-center flex justify-center"
+            >
+              Form
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
