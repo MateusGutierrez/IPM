@@ -16,6 +16,7 @@ import { FormSchema } from '@/schema';
 import { v4 as uuidv4 } from 'uuid';
 import { useStore } from 'zustand';
 import useMessageStore from '@/zustand/messageStore';
+import { toast } from 'react-toastify';
 
 const FormComponent: React.FC = () => {
   const { addMessage } = useStore(useMessageStore);
@@ -30,6 +31,7 @@ const FormComponent: React.FC = () => {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     addMessage({ ...data, id: uuidv4() });
+    toast.success('Mensagem adicionada com sucesso.')
     form.reset();
   }
 
